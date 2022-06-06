@@ -15,6 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-    #- run: docker buildx build ./13.0-arm64/ --platform linux/arm/v8 --file 13.0-arm64/Dockerfile --tag fbieringer/odoo:13.0-arm64
-      run: docker buildx build ./14.0-arm64/ --platform linux/arm/v8 --file 14.0-arm64/Dockerfile --tag fbieringer/odoo:14.0-arm64
-      
+    - run: sudo apt-get update && apt-get install -y qemu-user-static binfmt-support
+    - run: docker buildx build ./13.0-arm64/ --platform linux/arm/v8 --file 13.0-arm64/Dockerfile --tag fbieringer/odoo:13.0-arm64
+    - run: docker buildx build ./14.0-arm64/ --platform linux/arm/v8 --file 14.0-arm64/Dockerfile --tag fbieringer/odoo:14.0-arm64
+    - run: docker buildx build ./15.0-arm64/ --platform linux/arm/v8 --file 15.0-arm64/Dockerfile --tag fbieringer/odoo:15.0-arm64
