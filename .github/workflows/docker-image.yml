@@ -13,10 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout
+      uses: actions/checkout@v3
+    
+    - name: Docker Login      
+      if: success()      
+      run: |        
+        echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+    
     - name: Build the Docker image
       run: | 
         sudo apt-get update && sudo apt-get install -y qemu-user-static binfmt-support
         docker buildx build ./13.0-arm64/ --platform linux/arm/v8 --file 13.0-arm64/Dockerfile --tag fbieringer/odoo:13.0-arm64
         docker buildx build ./14.0-arm64/ --platform linux/arm/v8 --file 14.0-arm64/Dockerfile --tag fbieringer/odoo:14.0-arm64
         docker buildx build ./15.0-arm64/ --platform linux/arm/v8 --file 15.0-arm64/Dockerfile --tag fbieringer/odoo:15.0-arm64
+
