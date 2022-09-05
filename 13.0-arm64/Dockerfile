@@ -50,6 +50,7 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' > /etc/
         && rm -rf /var/lib/apt/lists/*
 
 # Install rtlcss (on Debian buster)
+USER root
 RUN npm install -g rtlcss
 
 # Install Odoo
