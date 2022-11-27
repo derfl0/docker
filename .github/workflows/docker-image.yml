@@ -30,8 +30,8 @@ jobs:
           push: true
           tags: fbieringer/odoo:13.0-arm64,fbieringer/odoo:13-arm64
           platform: linux/arm64
-          cache-from: type=gha,src=odoo/arm/13
-          cache-to: type=gha,src=odoo/arm/13
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
       -
         name: Build and push v14
         uses: docker/build-push-action@v3
@@ -40,8 +40,8 @@ jobs:
           push: true
           tags: fbieringer/odoo:14.0-arm64,fbieringer/odoo:14-arm64
           platform: linux/arm64
-          cache-from: type=gha,src=odoo/arm/13
-          cache-to: type=gha,src=odoo/arm/13
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
       -
         name: Build and push v15
         uses: docker/build-push-action@v3
@@ -50,5 +50,5 @@ jobs:
           push: true
           tags: fbieringer/odoo:15.0-arm64,fbieringer/odoo:15-arm64
           platform: linux/arm64
-          cache-from: type=gha,src=odoo/arm/13
-          cache-to: type=gha,src=odoo/arm/13
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
