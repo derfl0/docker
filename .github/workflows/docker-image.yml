@@ -52,3 +52,13 @@ jobs:
           platform: linux/arm64
           cache-to: type=registry,ref=fbieringer/odoo-arm-cache
           cache-from: type=registry,ref=fbieringer/odoo-arm-cache
+      -
+        name: Build and push v16
+        uses: docker/build-push-action@v3
+        with:
+          context: "{{defaultContext}}:16.0-arm64"
+          push: true
+          tags: fbieringer/odoo:16.0-arm64,fbieringer/odoo:16-arm64
+          platform: linux/arm64
+          cache-to: type=registry,ref=fbieringer/odoo-arm-cache
+          cache-from: type=registry,ref=fbieringer/odoo-arm-cache
