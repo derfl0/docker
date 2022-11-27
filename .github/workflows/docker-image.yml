@@ -26,7 +26,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: 13.0-arm64
+          context: "{{defaultContext}}:13.0-arm64"
           push: true
           tags: fbieringer/odoo:13.0-arm64,fbieringer/odoo:13-arm64
           platform: linux/arm64
